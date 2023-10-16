@@ -1,0 +1,186 @@
+---
+title: "L03 Tidy Data"
+subtitle: "Data Science 1 with R (STAT 301-1)"
+author: "YOUR NAME"
+
+format:
+  html:
+    toc: true
+    embed-resources: true
+    code-fold: show
+    link-external-newwindow: true
+
+execute:
+  warning: false
+  
+from: markdown+emoji 
+---
+
+
+::: {.callout-tip icon=false}
+
+## Github Repo Link
+
+To link to your github **repo**sitory, appropriately edit the example link below. Meaning replace `https://your-github-repo-url` with your github repo url. Suggest verifying the link works before submitting.
+
+[https://your-github-repo-url](https://your-github-repo-url)
+
+:::
+
+## Overview
+
+The goal of this lab is to learn what it means to be a "tidy" dataset and how to tidy messy datasets utilizing the `tidyr` package -- a core member of the `tidyverse`. 
+
+Useful resources:
+
+- [`tidyr` package home page](http://tidyr.tidyverse.org/)
+- [pivoting vignette](https://tidyr.tidyverse.org/articles/pivot.html)
+
+## Load packages
+
+You should always begin by loading all necessary packages towards the beginning of your document.
+
+```{r}
+#| label: load-pkgs
+#| code-fold: false
+
+# Loading package(s)
+
+```
+
+## Datasets 
+
+All datasets for the Exercises are either defined inline, provided within the core `tidyverse` packages (`table1`, `table2`, `table4a`, `table4b`), or provided in the `fivethirtyeight` package (`drinks`).
+
+The Case Study dataset is stored in the `data` folder and called `users_top7_2020.csv`.
+
+```{r}
+#| label: load-data
+#| code-fold: false
+
+# Load dataset(s)
+
+```
+
+## Exercises
+
+### Exercise 1 
+
+Recreate the plot below showing the change in cases over time using `table2`. What do you need to do first?
+
+::: {.callout-tip icon="false"}
+## Solution
+
+YOUR SOLUTION HERE
+
+:::
+
+### Exercise 2
+
+Tidy the simple tibble of [M&M](https://en.wikipedia.org/wiki/M%26M%27s) data below and drop the NA values.
+
+Do you need to make it wider or longer? What are the variables in your tidy version? What argument drops the NA values?
+
+```{r}
+#| label: ex-02
+#| eval: false
+
+# simple tibble of M&M data
+mm_data <- tribble(
+  ~mm_type, ~blue, ~orange,	~green,	~yellow, ~brown, ~red, ~cyan_blue,
+  "plain",  6,     18,      12,	    6,       7,	     7,    NA,
+  "peanut", NA,	   11,	    9,	    1,	     12,	   8,    15
+)
+```
+
+::: {.callout-tip icon="false"}
+## Solution
+
+YOUR SOLUTION HERE
+
+:::
+
+### Exercise 3
+
+Use `table4a` and **only** the `pivot_longer` function to recreate the following:
+
+::: {.callout-tip icon="false"}
+## Solution
+
+YOUR SOLUTION HERE
+
+:::
+
+### Exercise 4
+
+Use the `drinks` dataset and **only** the `pivot_longer` function to recreate the following:
+
+::: {.callout-tip icon="false"}
+## Solution
+
+YOUR SOLUTION HERE
+
+:::
+
+### Exercise 5
+
+What happens if you use `pivot_wider()` on this table so that we have a dataset with 3 columns (`respondent_name`, `age`, `height`) and why? 
+
+Fix the issue by adding a new column.
+
+```{r}
+#| label: ex-05
+#| eval: false
+
+# dataset/table
+people <- tribble(
+  ~respondent_name,  ~key,    ~value,
+  #-----------------|--------|------
+  "Phillip Woods",   "age",       45,
+  "Phillip Woods",   "height",   186,
+  "Phillip Woods",   "age",       50,
+  "Jessica Cordero", "age",       37,
+  "Jessica Cordero", "height",   156
+)
+```
+
+::: {.callout-tip icon="false"}
+## Solution
+
+YOUR SOLUTION HERE
+
+:::
+
+## Case Study
+
+Tinder is interested in knowing more about their most active users and have have tasked you with exploring their 7 most active users during 2020. The dataset containing the top 7 active users during 2020 is stored in the `data` folder and called `users_top7_2020.csv`.^[This dataset was sourced from [Swipestats.io](https://www.swipestats.io/).]
+
+The column names contain prefixes "matches", "likes", and "passes" followed by a number; the suffix number represents the month; and the cell represents either the total number of matches (matches), total number of times the user swiped right (likes), or total number of times the user swiped left (passes) during that month (ie: `matches_1` = total number of matches during January 2020).
+
+Use an appropriate graph to visualize the matches, likes, and passes over time for each user. What insights and conclusions can you gain from this graph, if any.
+
+::: {.callout-tip icon="false"}
+## Solution
+
+YOUR SOLUTION HERE
+
+:::
+
+
+
+## Graduate Challenge
+
+::: callout-important
+
+Graduate students are required to complete this challenge. **It is optional for undergraduate students.**
+
+:::
+
+Use `pivot_wider` to undo the data tidying you applied in the case study exercise above. That is, take the tidied data and turn it back into the original untidy format we had when we read in the `users_top7_2020` dataset.
+
+::: {.callout-tip icon="false"}
+## Solution
+
+YOUR SOLUTION HERE
+
+:::
